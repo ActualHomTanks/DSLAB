@@ -41,4 +41,7 @@ int main()
 	heap_sort(ar5, n);
 	print_array(ar5, n);
 
+	std::cout << "Radix sort:\n";
+	radix_sort(ar6, n);
+	print_array(ar6, n);
 }

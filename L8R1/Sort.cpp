@@ -151,11 +151,31 @@ int num_digits(int num)
 }
 
 
-void radix_sort(int ar*, int size)
+void count_sort(int* ar, int size, int exp)
+{
+	int output[100];
+	int i, count[10] = { 0 };
+
+	for (i = 0; i < size; i++)
+		count[(ar[i] / exp) % 10]++;
+
+	for (i = 1; i < 10; i++)
+		count[i] += count[i - 1];
+
+	for (i = size - 1; i >= 0; i--) {
+		output[count[(ar[i] / exp) % 10] - 1] = ar[i];
+		count[(ar[i] / exp) % 10]--;
+	}
+
+	for (i = 0; i < size; i++)
+		ar[i] = output[i];
+}
+
+
+void radix_sort(int* ar, int size)
 {
 	int max = maximum(ar, size);
 
-	int passes = num_digits(max);
-
-	
+	for (int exp = 1; max / exp > 0; exp *= 10)
+		count_sort(ar, size, exp);
 }
