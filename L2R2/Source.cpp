@@ -236,7 +236,7 @@ void infix_prefix(char infix[])
 
 			case '/': {
 				char e2 = s.peek();
-				if (precedence_prefix(e1) > precedence_prefix(e2)) {
+				if (precedence_prefix(e1) >= precedence_prefix(e2)) {
 					s.push(e1);
 					break;
 				}
@@ -244,7 +244,7 @@ void infix_prefix(char infix[])
 					do {
 						output.push(s.pop());
 						e2 = s.peek();
-					} while (precedence_prefix(e1) <= precedence_prefix(e2));
+					} while (precedence_prefix(e1) < precedence_prefix(e2));
 
 					s.push(e1);
 					break;

@@ -66,7 +66,6 @@ void Student::sort_students(Student s[], int& index)
 				s[i + 1].name = temp.name;
 				s[i + 1].rollNo = temp.rollNo;
 				s[i + 1].grade = temp.grade;
-				//std::cout << "here2\n";
 				sorted = false;
 			}
 		}
